@@ -1,0 +1,83 @@
+base:
+  origin:
+    xyz: 0 0 0.1692
+    rpy: 0 0 0
+  parent: link0
+  child: link1
+  axis:
+    xyz: 0 0 1
+  limit:
+    lower: -3.14
+    upper: 3.14
+    effort: 10
+    velocity: 3.14
+
+shoulder:
+  origin:
+    xyz: 0 0 0
+    rpy: 0 0 0
+  parent: link1
+  child: link2
+  axis:
+    xyz: 0 1 0
+  limit:
+    lower: -3.14
+    upper: 3.14
+    effort: 10
+    velocity: 3.14
+
+elbow:
+  origin:
+    xyz: 0 0 0.425
+    rpy: 0 0 0
+  parent: link2
+  child: link3
+  axis:
+    xyz: 0 1 0
+  limit:
+    lower: -3.14
+    upper: 3.14
+    effort: 10
+    velocity: 3.14
+
+wrist1:
+  origin:
+    xyz: 0 0 0.392
+    rpy: 0 0 0
+  parent: link3
+  child: link4
+  axis:
+    xyz: 0 1 0
+  limit:
+    lower: -3.14
+    upper: 3.14
+    effort: 10
+    velocity: 3.14
+
+wrist2:
+  origin:
+    xyz: 0 -0.1107 0.1107
+    rpy: 0 0 0
+  parent: link4
+  child: link5
+  axis:
+    xyz: 0 0 1
+  limit:
+    lower: -3.14
+    upper: 3.14
+    effort: 10
+    velocity: 3.14
+
+wrist3:
+  origin:
+    xyz: 0 0 0
+    rpy: 0 0 0
+  parent: link5
+  child: link6
+  axis:
+    xyz: 0 1 0
+  limit:
+    lower: -3.14
+    upper: 3.14
+    effort: 10
+    velocity: 3.14

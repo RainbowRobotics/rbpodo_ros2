@@ -1,0 +1,9 @@
+<library path="rbpodo_hardware">
+    <class name="rbpodo_hardware/RBPodoHardwareInterface"
+           type="rbpodo_hardware::RBPodoHardwareInterface"
+           base_class_type="hardware_interface::SystemInterface">
+        <description>
+            Hardware interface for Rainbow Robotics Cobot
+        </description>
+    </class>
+</library>

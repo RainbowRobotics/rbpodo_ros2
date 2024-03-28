@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rb3_730es_u">
+
+    <!-- Import rb3_730es_u urdf file -->
+    <xacro:include filename="$(find rbpodo_description)/robots/rb3_730es_u.urdf.xacro" />
+
+</robot>

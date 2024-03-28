@@ -1,0 +1,7 @@
+# Play task
+
+# Request
+float32 timeout
+---
+# Reply
+bool    success

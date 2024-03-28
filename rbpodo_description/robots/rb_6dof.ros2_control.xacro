@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="rb_6dof_ros2_control" params="prefix robot_ip cb_simulation:=true use_fake_hardware:=^|false fake_sensor_commands:=^|false torque_constants:=${[1, 1, 1, 1, 1, 1]}">
+    <ros2_control name="RBPodoHardwareInterface" type="system">
+      <hardware>
+        <xacro:if value="${use_fake_hardware}">
+          <plugin>mock_components/GenericSystem</plugin>
+          <param name="mock_sensor_commands">${fake_sensor_commands}</param>
+          <param name="state_following_offset">0.0</param>
+        </xacro:if>
+        <xacro:unless value="${use_fake_hardware}">
+          <plugin>rbpodo_hardware/RBPodoHardwareInterface</plugin>
+          <param name="cb_simulation">${cb_simulation}</param>
+          <param name="robot_ip">${robot_ip}</param>
+        </xacro:unless>
+      </hardware>
+
+      <xacro:macro name="configure_joint" params="joint_name torque_constant:=1">
+        <joint name="${joint_name}">
+          <param name="initial_position">0.0</param>
+          <param name="torque_constant">${torque_constant}</param>
+          <command_interface name="effort"/>
+          <command_interface name="velocity"/>
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="effort"/>
+        </joint>
+      </xacro:macro>
+
+      <xacro:configure_joint joint_name="${prefix}base" torque_constant="${torque_constants[0]}" />
+      <xacro:configure_joint joint_name="${prefix}shoulder" torque_constant="${torque_constants[1]}" />
+      <xacro:configure_joint joint_name="${prefix}elbow" torque_constant="${torque_constants[2]}" />
+      <xacro:configure_joint joint_name="${prefix}wrist1" torque_constant="${torque_constants[3]}" />
+      <xacro:configure_joint joint_name="${prefix}wrist2" torque_constant="${torque_constants[4]}" />
+      <xacro:configure_joint joint_name="${prefix}wrist3" torque_constant="${torque_constants[5]}" />
+
+    </ros2_control>
+  </xacro:macro>
+</robot>

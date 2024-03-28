@@ -1,0 +1,7 @@
+
+MoveJb2Point[]  points
+float32         time_for_waiting_start  # maximum duration (in seconds) to wait for start signal before timing out.
+---
+bool            success
+---
+SystemState     state

@@ -1,0 +1,13 @@
+# move_j(...)
+
+## Request
+float32[6]    joint                   # target joint angles. (unit: degree)
+float32       speed                   # speed (unit: deg/s)
+float32       acceleration            # acceleration (unit: deg/s^2)
+float32       time_for_waiting_start  # maximum duration (in seconds) to wait for start signal before timing out.
+---
+## Result
+bool          success       # 
+---
+## Feedback
+SystemState   state         #

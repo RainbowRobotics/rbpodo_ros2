@@ -1,0 +1,12 @@
+uint8             MOVE_PB_OPTION_INTENDED = 0
+uint8             MOVE_PB_OPTION_CONSTANT = 1
+uint8             MOVE_PB_OPTION_SMOOTH = 2
+
+MovePbPoint[]     points
+float32           acceleration
+uint8             option
+float32           time_for_waiting_start  # maximum duration (in seconds) to wait for start signal before timing out.
+---
+bool              success
+---
+SystemState       state

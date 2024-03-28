@@ -1,0 +1,14 @@
+# Arrival time to the destination (unit: sec. t1 >= 0.002)
+float64 t1 
+
+# Time to maintain the action after arrival (unit: sec. 0.02 < t2 < 0.2)
+float64 t2
+
+# Compensation mode
+# 0: target effort = input effort
+# 1: target effort = input effort + gravity compensation value
+# 2: target effort = input effort + friction compensation value 30%
+# 3: target effort = input effort + gravity compensation value + frcition compensation value 30%
+uint8 mode
+---
+bool success

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rb3_1200e_u">
+
+  <xacro:include filename="$(find rbpodo_description)/robots/rb_6dof.xacro" />
+  <xacro:include filename="$(find rbpodo_description)/robots/rb_6dof.ros2_control.xacro" />
+
+  <xacro:arg name="prefix" default="" />
+  <xacro:arg name="robot_ip" default="10.0.2.7"/>
+  <xacro:arg name="cb_simulation" default="true"/>
+  <xacro:arg name="use_fake_hardware" default="false"/>
+  <xacro:arg name="fake_sensor_commands" default="false"/>
+
+  <!-- torque_constant = actual_torque_constant * gear_ratio -->
+  <xacro:property name="base_tc" value="${1}" />
+  <xacro:property name="shoulder_tc" value="${1}" />
+  <xacro:property name="elbow_tc" value="${1}" />
+  <xacro:property name="wrist1_tc" value="${1}" />
+  <xacro:property name="wrist2_tc" value="${1}" />
+  <xacro:property name="wrist3_tc" value="${1}" />
+
+  <xacro:rb_6dof model_id="rb3_1200e_u" prefix="$(arg prefix)" tcp_name="tcp" tcp_xyz="0 -0.0967 0" tcp_rpy="0 0 0" />
+  <xacro:rb_6dof_ros2_control prefix="$(arg prefix)" robot_ip="$(arg robot_ip)" cb_simulation="$(arg cb_simulation)" use_fake_hardware="$(arg use_fake_hardware)" fake_sensor_commands="$(arg fake_sensor_commands)" torque_constants="${[base_tc, shoulder_tc, elbow_tc, wrist1_tc, wrist2_tc, wrist3_tc]}" />
+
+</robot>
