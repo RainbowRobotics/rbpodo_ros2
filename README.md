@@ -1,4 +1,4 @@
-# rbpodo_ros
+# rbpodo_ros2
 
 > :warning: **IMPORTANT WARNING**: This software is under active development. DO NOT USE in production to avoid potential instability.
 
