@@ -34,11 +34,14 @@
    ```bash
    mkdir -p ~/rbpodo_ros_ws/src
    ```
-2. Clone repo and build ``rbpodo_ros`` packages:
+2. Clone repo and build ``rbpodo_ros2`` packages:
    ```bash
    cd ~/rbpodo_ros_ws/src
-   git clone ...
-   
+   git clone git@github.com:RainbowRobotics/rbpodo_ros2.git
+   ```
+   ```bash
+   cd ~/rbpodo_ros_ws
+   colcon build
    ```
 
 ## How to Use
