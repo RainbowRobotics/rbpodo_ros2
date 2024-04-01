@@ -57,7 +57,7 @@ def launch_setup(context, *args, **kwargs):
 
     rviz_base = LaunchConfiguration("rviz_config")
     rviz_config = PathJoinSubstitution(
-        [FindPackageShare("rb3_730es_u_moveit_config"), "launch", rviz_base]
+        [FindPackageShare("rb3_730es_u_moveit_config"), "config", rviz_base]
     )
 
     # RViz
