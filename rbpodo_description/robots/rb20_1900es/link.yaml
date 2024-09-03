@@ -1,0 +1,83 @@
+link1:
+  inertial:
+    origin:
+      xyz: 0.000 -0.008 -0.056
+      rpy: 0 0 0
+    mass: 15.480
+    inertia:
+      xx: 0.084
+      yy: 0.084
+      zz: 0.067
+      xy: 0.000
+      xz: 0.000
+      yz: 0.006
+
+link2:
+  inertial:
+    origin:
+      xyz: -0.000 -0.217 0.341
+      rpy: 0 0 0
+    mass: 32.790
+    inertia:
+      xx: 4.810
+      yy: 4.773
+      zz: 0.175
+      xy: 0.000
+      xz: 0.000
+      yz: 0.104
+
+link3:
+  inertial:
+    origin:
+      xyz: 0.0 -0.008 0.042
+      rpy: 0 0 0
+    mass: 8.371
+    inertia:
+      xx: 0.027
+      yy: 0.028
+      zz: 0.026
+      xy: 0.000
+      xz: 0.000
+      yz: -0.003
+
+link4:
+  inertial:
+    origin:
+      xyz: 0.0 -0.068 0.505
+      rpy: 0 0 0
+    mass: 8.140
+    inertia:
+      xx: 0.718
+      yy: 0.696
+      zz: 0.046
+      xy: 0.000
+      xz: 0.000
+      yz: 0.099
+
+link5:
+  inertial:
+    origin:
+      xyz: 0.0 0.0 0.035
+      rpy: 0 0 0
+    mass: 1.924
+    inertia:
+      xx: 0.002
+      yy: 0.002
+      zz: 0.002
+      xy: 0.000
+      xz: 0.000
+      yz: 0.000
+
+link6:
+  inertial:
+    origin:
+      xyz: 0.000 0.000 0.104
+      rpy: 0 0 0
+    mass: 0.588
+    inertia:
+      xx: 0.001
+      yy: 0.001
+      zz: 0.001
+      xy: 0.000
+      xz: 0.000
+      yz: 0.000

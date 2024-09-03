@@ -8,7 +8,7 @@ def generate_launch_description():
     ld = LaunchDescription()
 
     package_path = FindPackageShare("rbpodo_description")
-    default_model_path = PathJoinSubstitution(["robots", "rb5_850e.urdf.xacro"])
+    default_model_path = PathJoinSubstitution(["robots", "rb20_1900es.urdf.xacro"])
     default_rviz_config_path = PathJoinSubstitution([package_path, "rviz", "urdf.rviz"])
 
     # These parameters are maintained for backwards compatibility
@@ -19,6 +19,7 @@ def generate_launch_description():
         description="Flag to enable joint_state_publisher_gui",
     )
     ld.add_action(gui_arg)
+    
     rviz_arg = DeclareLaunchArgument(
         name="rvizconfig",
         default_value=default_rviz_config_path,
