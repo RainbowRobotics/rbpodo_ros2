@@ -8,7 +8,7 @@ def generate_launch_description():
     ld = LaunchDescription()
 
     package_path = FindPackageShare("rbpodo_description")
-    default_model_path = PathJoinSubstitution(["robots", "rb20_1900es.urdf.xacro"])
+    default_model_path = PathJoinSubstitution(["robots", "rb3_1200e.urdf.xacro"])
     default_rviz_config_path = PathJoinSubstitution([package_path, "rviz", "urdf.rviz"])
 
     # These parameters are maintained for backwards compatibility
