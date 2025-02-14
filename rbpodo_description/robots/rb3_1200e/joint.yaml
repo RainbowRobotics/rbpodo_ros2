@@ -28,7 +28,7 @@ shoulder:
 
 elbow:
   origin:
-    xyz: 0 0 0.6070
+    xyz: 0 -0.1484 0.5669
     rpy: 0 0 0
   parent: link2
   child: link3
@@ -42,7 +42,7 @@ elbow:
 
 wrist1:
   origin:
-    xyz: 0 0 0.4823
+    xyz: 0 0.1484 0.5224
     rpy: 0 0 0
   parent: link3
   child: link4
