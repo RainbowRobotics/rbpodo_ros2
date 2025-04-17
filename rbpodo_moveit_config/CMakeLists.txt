@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(rb3_730es_u_moveit_config)
+project(rbpodo_moveit_config)
 
 find_package(ament_cmake REQUIRED)
 

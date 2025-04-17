@@ -10,6 +10,11 @@ from ament_index_python.packages import get_package_share_directory
 from moveit_configs_utils import MoveItConfigsBuilder
 
 
+robot_ip = LaunchConfiguration("robot_ip")
+use_fake_hardware = LaunchConfiguration("use_fake_hardware")
+fake_sensor_commands = LaunchConfiguration("fake_sensor_commands")
+model_id = LaunchConfiguration("model_id")
+
 def generate_launch_description():
 
     declared_arguments = []
@@ -20,6 +25,34 @@ def generate_launch_description():
             description="RViz configuration file",
         )
     )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "robot_ip",
+            default_value="10.0.2.7",
+            description="RB Cobot Control Box IP Address",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "use_fake_hardware",
+            default_value="true",
+            description="True if there's no RB Cobot Control Box",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "fake_sensor_commands",
+            default_value="false",
+            description="True when use fake sensor commands",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "model_id",
+            default_value="rb5_850e",
+            description="RB Series currently using",
+        )
+    )
 
     return LaunchDescription(
         declared_arguments + [OpaqueFunction(function=launch_setup)]
@@ -28,15 +61,15 @@ def generate_launch_description():
 
 def launch_setup(context, *args, **kwargs):
     mappings = {
-        "robot_ip": "10.0.2.7",
-        "cb_simulation": "true",
-        "use_fake_hardware": "false",
-        "fake_sensor_commands": "false",
+        "robot_ip": robot_ip,
+        "use_fake_hardware": use_fake_hardware,
+        "fake_sensor_commands": fake_sensor_commands,
+        "model_id": model_id,
     }
 
     moveit_config = (
-        MoveItConfigsBuilder("rb3_730es_u")
-        .robot_description(file_path="config/rb3_730es_u.urdf.xacro", mappings=mappings)
+        MoveItConfigsBuilder("rbpodo")
+        .robot_description(file_path="config/rbpodo.urdf.xacro", mappings=mappings)
         .trajectory_execution(file_path="config/moveit_controllers.yaml")
         .planning_scene_monitor(
             publish_robot_description=True, publish_robot_description_semantic=True
@@ -57,7 +90,7 @@ def launch_setup(context, *args, **kwargs):
 
     rviz_base = LaunchConfiguration("rviz_config")
     rviz_config = PathJoinSubstitution(
-        [FindPackageShare("rb3_730es_u_moveit_config"), "config", rviz_base]
+        [FindPackageShare("rbpodo_moveit_config"), "config", rviz_base]
     )
 
     # RViz
