@@ -120,28 +120,28 @@
   </link>
   <link name="tcp"/>
   <joint name="base" type="revolute">
-    <origin rpy="0 0 0" xyz="0 0 0.197"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="link0"/>
     <child link="link1"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.14" upper="3.14" velocity="3.14"/>
   </joint>
   <joint name="shoulder" type="revolute">
-    <origin rpy="0 0 0" xyz="0 -0.1875 0"/>
+    <origin rpy="0 0 0" xyz="0 0 0.197"/>
     <parent link="link1"/>
     <child link="link2"/>
     <axis xyz="0 1 0"/>
     <limit effort="10" lower="-3.14" upper="3.14" velocity="3.14"/>
   </joint>
   <joint name="elbow" type="revolute">
-    <origin rpy="0 0 0" xyz="0 0 0.6127"/>
+    <origin rpy="0 0 0" xyz="0 -0.1875 0.6127"/>
     <parent link="link2"/>
     <child link="link3"/>
     <axis xyz="0 1 0"/>
     <limit effort="10" lower="-3.14" upper="3.14" velocity="3.14"/>
   </joint>
   <joint name="wrist1" type="revolute">
-    <origin rpy="0 0 0" xyz="0 0.11715 0.57015"/>
+    <origin rpy="0 0 0" xyz="0 0.1484 0.57015"/>
     <parent link="link3"/>
     <child link="link4"/>
     <axis xyz="0 1 0"/>
