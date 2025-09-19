@@ -14,6 +14,7 @@ robot_ip = LaunchConfiguration("robot_ip")
 use_fake_hardware = LaunchConfiguration("use_fake_hardware")
 fake_sensor_commands = LaunchConfiguration("fake_sensor_commands")
 model_id = LaunchConfiguration("model_id")
+cb_simulation = LaunchConfiguration("cb_simulation")
 
 def generate_launch_description():
 
@@ -48,12 +49,19 @@ def generate_launch_description():
     )
     declared_arguments.append(
         DeclareLaunchArgument(
+            "cb_simulation",
+            default_value="Simulation",
+            description="Select RB Control Box mode, Simulation or Real",
+        )
+    )
+
+    declared_arguments.append(
+        DeclareLaunchArgument(
             "model_id",
             default_value="rb5_850e",
             description="RB Series currently using",
         )
     )
-
     return LaunchDescription(
         declared_arguments + [OpaqueFunction(function=launch_setup)]
     )
@@ -65,6 +73,7 @@ def launch_setup(context, *args, **kwargs):
         "use_fake_hardware": use_fake_hardware,
         "fake_sensor_commands": fake_sensor_commands,
         "model_id": model_id,
+        "cb_simulation": cb_simulation,
     }
 
     moveit_config = (
