@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="rb_6dof_ros2_control" params="prefix robot_ip cb_simulation:=true use_fake_hardware:=^|false fake_sensor_commands:=^|false torque_constants:=${[1, 1, 1, 1, 1, 1]}">
+  <xacro:macro name="rb_6dof_ros2_control" params="prefix robot_ip cb_simulation:=^|false use_fake_hardware:=^|false fake_sensor_commands:=^|false torque_constants:=${[1, 1, 1, 1, 1, 1]}">
     <ros2_control name="RBPodoHardwareInterface" type="system">
       <hardware>
         <xacro:if value="${use_fake_hardware}">

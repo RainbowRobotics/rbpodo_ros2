@@ -23,6 +23,7 @@ def generate_launch_description():
     model_path_parameter_name = "model_path"
     use_fake_hardware_parameter_name = "use_fake_hardware"
     fake_sensor_commands_parameter_name = "fake_sensor_commands"
+    cb_simulation_parameter_name = "cb_simulation"
     use_rviz_parameter_name = "use_rviz"
 
     robot_ip = LaunchConfiguration(robot_ip_parameter_name)
@@ -31,13 +32,15 @@ def generate_launch_description():
     use_fake_hardware = LaunchConfiguration(use_fake_hardware_parameter_name)
     fake_sensor_commands = LaunchConfiguration(fake_sensor_commands_parameter_name)
     use_rviz = LaunchConfiguration(use_rviz_parameter_name)
-    use_rviz = LaunchConfiguration(use_rviz_parameter_name)
+    cb_simulation = LaunchConfiguration(cb_simulation_parameter_name)
 
     robot_description = Command(
         [
             FindExecutable(name="xacro"),
             " ",
             model_path,
+            " cb_simulation:=",
+            cb_simulation,
             " robot_ip:=",
             robot_ip,
             " use_fake_hardware:=",
@@ -61,6 +64,13 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
+            DeclareLaunchArgument(
+                cb_simulation_parameter_name,
+                default_value="false",
+                description="Select RB Control Box mode, Simulation or Real".format(
+                    cb_simulation_parameter_name
+                ),
+            ),
             DeclareLaunchArgument(
                 robot_ip_parameter_name,
                 default_value="10.0.2.7",

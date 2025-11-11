@@ -55,10 +55,10 @@
 
 ```bash
 source ~/rbpodo_ros2_ws/install/setup.bash
-ros2 launch rbpodo_bringup rbpodo.launch.py model_id:=rb3_730es_u use_rviz:=true
+ros2 launch rbpodo_bringup rbpodo.launch.py model_id:=rb3_730es_u use_fake_hardware:=false cb_simulation:=false robot_ip:="10.0.2.7" use_rviz:=true
 ```
 
 ```bash
 source ~/rbpodo_ros2_ws/install/setup.bash
-ros2 launch rbpodo_moveit_config moveit.launch.py model_id:="rb5_850e" robot_ip:="10.0.2.7" use_fake_hardware:=false
+ros2 launch rbpodo_moveit_config moveit.launch.py model_id:="rb5_850e" use_fake_hardware:=false cb_simulation:=false robot_ip:="10.0.2.7" 
 ```
