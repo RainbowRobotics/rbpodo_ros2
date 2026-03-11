@@ -146,15 +146,15 @@ class Robot {
 
   bool move_stop(double timeout = -1.);
 
-  bool write_once_joint_positions(const std::array<double, kNumberOfJoints>& positions);
+  bool write_once_joint_positions(const std::array<double, kNumberOfJoints>& positions, double period_seconds);
 
-  bool write_once_joint_velocities(const std::array<double, kNumberOfJoints>& velocities);
+  bool write_once_joint_velocities(const std::array<double, kNumberOfJoints>& velocities, double period_seconds);
 
-  bool write_once_joint_efforts(const std::array<double, kNumberOfJoints>& efforts);
+  bool write_once_joint_efforts(const std::array<double, kNumberOfJoints>& efforts, double period_seconds);
 
-  bool write_once_cartesian_pose(const std::array<double, k6DoFDim>& pose);
+  bool write_once_cartesian_pose(const std::array<double, k6DoFDim>& pose, double period_seconds);
 
-  bool write_once_cartesian_velocity(const std::array<double, k6DoFDim>& velocity);
+  bool write_once_cartesian_velocity(const std::array<double, k6DoFDim>& velocity, double period_seconds);
 
   void set_joint_position_controller_config(JointPositionControllerConfig jpc_config);
 
