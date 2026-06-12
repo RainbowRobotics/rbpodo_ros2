@@ -35,11 +35,17 @@ class Robot {
   static constexpr double kStateUpdateRate{500};
 
   struct JointPositionControllerConfig {
+
     /// Arrival time to the destination (unit: sec. t1 >= 0.002)
+    static constexpr double kMinT1{0.002};
     double t1{0.01};
 
+    [[nodiscard]] double normalized_t1(double requested_t1) const {
+      return requested_t1 < kMinT1 ? kMinT1 : requested_t1;
+    }
+
     /// Time to maintain the action after arrival (unit: sec. 0.02 < t2 < 0.2)
-    double t2{0.1};
+    double t2{0.03};
 
     /// Speed tracking rate (gain > 0)
     double gain{0.5};
@@ -50,10 +56,15 @@ class Robot {
 
   struct JointVelocityControllerConfig {
     /// Arrival time to the destination (unit: sec. t1 >= 0.002)
+    static constexpr double kMinT1{0.002};
     double t1{0.01};
 
+    [[nodiscard]] double normalized_t1(double requested_t1) const {
+      return requested_t1 < kMinT1 ? kMinT1 : requested_t1;
+    }
+
     /// Time to maintain the action after arrival (unit: sec. 0.02 < t2 < 0.2)
-    double t2{0.1};
+    double t2{0.03};
 
     /// Speed tracking rate (gain > 0)
     double gain{0.5};
@@ -64,10 +75,15 @@ class Robot {
 
   struct JointEffortControllerConfig {
     /// Arrival time to the destination (unit: sec. t1 >= 0.002)
+    static constexpr double kMinT1{0.002};
     double t1{0.01};
 
+    [[nodiscard]] double normalized_t1(double requested_t1) const {
+      return requested_t1 < kMinT1 ? kMinT1 : requested_t1;
+    }
+
     /// Time to maintain the action after arrival (unit: sec. 0.02 < t2 < 0.2)
-    double t2{0.1};
+    double t2{0.03};
 
     /// Compensation mode
     /// mode:
@@ -80,10 +96,15 @@ class Robot {
 
   struct CartesianPoseControllerConfig {
     /// Arrival time to the destination (unit: sec. t1 >= 0.002)
+    static constexpr double kMinT1{0.002};
     double t1{0.01};
 
+    [[nodiscard]] double normalized_t1(double requested_t1) const {
+      return requested_t1 < kMinT1 ? kMinT1 : requested_t1;
+    }
+
     /// Time to maintain the action after arrival (unit: sec. 0.02 < t2 < 0.2)
-    double t2{0.1};
+    double t2{0.03};
 
     /// Speed tracking rate (gain > 0)
     double gain{0.5};
@@ -94,10 +115,15 @@ class Robot {
 
   struct CartesianVelocityControllerConfig {
     /// Arrival time to the destination (unit: sec. t1 >= 0.002)
+    static constexpr double kMinT1{0.002};
     double t1{0.01};
 
+    [[nodiscard]] double normalized_t1(double requested_t1) const {
+      return requested_t1 < kMinT1 ? kMinT1 : requested_t1;
+    }
+
     /// Time to maintain the action after arrival (unit: sec. 0.02 < t2 < 0.2)
-    double t2{0.1};
+    double t2{0.03};
 
     /// Speed tracking rate (gain > 0)
     double gain{0.5};
@@ -105,6 +131,7 @@ class Robot {
     /// Low-pass filter gain (The smaller it is, the smoother the action becomes. 0 < alpha < 1)
     double alpha{0.5};
   };
+
 
   explicit Robot(const std::string& ip, bool simulation, const rclcpp::Logger& logger);
 
