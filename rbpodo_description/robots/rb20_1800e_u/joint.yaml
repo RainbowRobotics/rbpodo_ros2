@@ -42,24 +42,10 @@ elbow:
 
 wrist1:
   origin:
-    xyz: 0 0.1875 0
+    xyz: 0 0.1875 0.7858
     rpy: 0 0 0
   parent: link3
   child: link4
-  axis:
-    xyz: 0 0 1
-  limit:
-    lower: -3.14
-    upper: 3.14
-    effort: 10
-    velocity: 3.14
-
-wrist2:
-  origin:
-    xyz: 0 -0.1292 0.885
-    rpy: 0 0 0
-  parent: link4
-  child: link5
   axis:
     xyz: 0 1 0
   limit:
@@ -68,14 +54,28 @@ wrist2:
     effort: 10
     velocity: 3.14
 
+wrist2:
+  origin:
+    xyz: 0 -0.1292 0
+    rpy: 0 0 0
+  parent: link4
+  child: link5
+  axis:
+    xyz: 0 0 1
+  limit:
+    lower: -3.14
+    upper: 3.14
+    effort: 10
+    velocity: 3.14
+
 wrist3:
   origin:
-    xyz: 0 0.1292 0
+    xyz: 0 0 0.1292
     rpy: 0 0 0
   parent: link5
   child: link6
   axis:
-    xyz: 0 0 1
+    xyz: 0 1 0
   limit:
     lower: -3.14
     upper: 3.14
