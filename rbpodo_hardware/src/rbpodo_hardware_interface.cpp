@@ -150,6 +150,27 @@ std::vector<hardware_interface::CommandInterface> RBPodoHardwareInterface::expor
 hardware_interface::return_type RBPodoHardwareInterface::prepare_command_mode_switch(
     const std::vector<std::string>& start_interfaces, const std::vector<std::string>& stop_interfaces) {
   RCLCPP_INFO(getLogger(), "prepare_command_mode_switch");
+  {
+    const auto touches_this_component = [this](const std::vector<std::string>& ifaces) {
+      for (const auto& iface : ifaces) {
+        const auto slash = iface.find('/');
+        if (slash == std::string::npos) {
+          continue;
+        }
+        const auto joint = iface.substr(0, slash);
+        for (const auto& own : info_.joints) {
+          if (own.name == joint) {
+            return true;
+          }
+        }
+      }
+      return false;
+    };
+    if (!touches_this_component(start_interfaces) && !touches_this_component(stop_interfaces)) {
+      return hardware_interface::return_type::OK;
+    }
+  }
+
   auto revert = [this]() {
     for (auto info : command_interface_infos_) {
       info.state.claimed = info.state.running;
@@ -158,7 +179,14 @@ hardware_interface::return_type RBPodoHardwareInterface::prepare_command_mode_sw
 
   for (auto info : command_interface_infos_) {
     std::stringstream ss;
-    ss << ".*\\/" << info.type;
+    ss << "^(";
+    for (size_t joint_idx = 0; joint_idx < info_.joints.size(); ++joint_idx) {
+      if (joint_idx != 0) {
+        ss << "|";
+      }
+      ss << info_.joints[joint_idx].name;
+    }
+    ss << ")\\/" << info.type << "$";
     std::regex re(ss.str());
 
     size_t num_start_interface =
